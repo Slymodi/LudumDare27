@@ -21,7 +21,7 @@ package States.Game
 		protected var PL:Mantaray = new Mantaray();
 		protected var SC:Number = 0
 		protected var d:Number = 0;
-		protected var coll:int;
+		protected var coll:int,l:int;
 		protected var GB:FlxGroup = new FlxGroup();
 		protected var GR:FlxGroup = new FlxGroup();
 		protected var GG:FlxGroup = new FlxGroup();
@@ -31,11 +31,12 @@ package States.Game
 		protected var count:Number = 10;
 		protected var cdt:Countdown = new Countdown();
 		
-		public function Collect(Score:int,diff:Number) 
+		public function Collect(Score:int,diff:Number,lives:int) 
 		{
 			FlxG.mouse.hide();
 			super();
 			add(PL);
+			l = lives;
 			SC = Score;
 			d = diff;
 			var T:FlxText = new FlxText(0, 0, FlxG.width, "Collect the blue and gold jellyfish! Beware the red ones!");
@@ -94,9 +95,9 @@ package States.Game
 				cl.cx();
 				if (cl.x>=0){
 					if (isWon) {
-					FlxG.switchState(new Play(SC+5,int(d+1)));
+					FlxG.switchState(new Play(SC+5,int(d+1),l));
 					} else {
-					FlxG.switchState(new EndGame(SC));
+					FlxG.switchState(new Play(SC,int(d+1),l-1));
 				}
 				}
 			}

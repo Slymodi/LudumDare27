@@ -17,7 +17,7 @@ package States.Game
 	{
 		protected var H:Hand = new Hand();
 		protected var F:Fist = new Fist();
-		protected var scoreVal:int;
+		protected var scoreVal:int,l:int;
 		protected var d:Number;
 		protected var center:Number = 300;
 		protected var counter:Number = 10;
@@ -27,9 +27,10 @@ package States.Game
 		protected var isWon:Boolean = true;
 		protected var cdt:Countdown = new Countdown();
 		
-		public function Resist(Score:int =0,difficulty:Number=1) 
+		public function Resist(Score:int =0,difficulty:Number=1,lives:int=3) 
 		{
 			super();
+			l = lives;
 			var T:FlxText = new FlxText(0, 0, FlxG.width, "Hit Space to resist!");
 			T.setFormat(null, 16, 0xffffff, "center");
 			add(T);
@@ -65,9 +66,9 @@ package States.Game
 				cl.cx();
 				if (cl.x>=0) {
 					if (isWon) {
-						FlxG.switchState(new Play(scoreVal,d));
+						FlxG.switchState(new Play(scoreVal,d,l));
 					}else {
-						FlxG.switchState(new EndGame(scoreVal));
+						FlxG.switchState(new Play(scoreVal,d,l-1));
 					}
 				}
 			}

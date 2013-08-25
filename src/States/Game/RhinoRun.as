@@ -2,6 +2,7 @@ package States.Game
 {
 	import Entities.Rhinojump.Rhino;
 	import Entities.Rhinojump.RRBG;
+	import flash.geom.Point;
 	import org.flixel.FlxState;
 	
 	/**
@@ -12,6 +13,8 @@ package States.Game
 	{
 		protected var bg:RRBG = new RRBG();
 		protected var Rh:Rhino = new Rhino();
+		protected var vel:Point = new Point(0, 0);
+		protected var acc:Point = new Point(0, 9.8);
 		public function RhinoRun(Score:int = 0, difficulty:int = 0 ) 
 		{
 			super();

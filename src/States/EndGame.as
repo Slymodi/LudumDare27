@@ -1,5 +1,6 @@
 package States 
 {
+	import Entities.Hearts;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -22,6 +23,7 @@ package States
 		add(T2);
 		B1 = new FlxButton(360,400, "Play Again", goback);
 		add(B1);
+		add(new Hearts(0));
 		}
 		
 		public override function update():void {

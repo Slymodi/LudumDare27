@@ -22,7 +22,7 @@ package States.Game
 		
 		protected var g:FlxGroup;
 		protected var C:Cursor = new Cursor()
-		private var Scoreval:int;
+		private var Scoreval:int,l:int;
 		protected var diff:Number = 0;
 		protected var count:Number = 10;
 		protected var t:FlxText;
@@ -32,9 +32,10 @@ package States.Game
 		protected var isWon:Boolean = false;
 		protected var cdt:Countdown = new Countdown();
 		
-		public function Kill(Score:int=0,diffuculty:Number =1) 
+		public function Kill(Score:int=0,diffuculty:Number =1,lives:int=3) 
 		{
 			super();
+			l = lives;
 			t = new FlxText(0, 0, FlxG.width, "Kill the Ninjas!");
 			t.setFormat(null, 16, 0xffffff, "center");
 			add(t);
@@ -81,9 +82,9 @@ package States.Game
 				cl.cx();
 				if (cl.x>=0) {
 					if (isWon) {
-						FlxG.switchState(new Play(Scoreval + 5,diff*5-4));
+						FlxG.switchState(new Play(Scoreval + 5,diff*5-4,l));
 					} else {
-						FlxG.switchState(new EndGame(Scoreval));
+						FlxG.switchState(new Play(Scoreval,diff*5-4,l-1));
 					}
 				}
 			}
