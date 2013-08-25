@@ -30,6 +30,11 @@ package States.Game
 		protected var cl:Curtainl = new Curtainl();
 		protected var count:Number = 10;
 		protected var cdt:Countdown = new Countdown();
+<<<<<<< HEAD
+		[Embed(source = "../../../assets/Play.mp3")] public const SF:Class;
+		protected var wtheme:FlxSound = new FlxSound();
+=======
+>>>>>>> origin/master
 		
 		public function Collect(Score:int,diff:Number,lives:int) 
 		{
@@ -39,6 +44,10 @@ package States.Game
 			l = lives;
 			SC = Score;
 			d = diff;
+<<<<<<< HEAD
+			wtheme.loadEmbedded(SF);
+=======
+>>>>>>> origin/master
 			var T:FlxText = new FlxText(0, 0, FlxG.width, "Collect the blue and gold jellyfish! Beware the red ones!");
 			T.setFormat(null, 16, 0xffffff, "center");
 			add(T);
@@ -49,6 +58,10 @@ package States.Game
 			add(cr);
 			add(cl);
 			add(cdt);
+<<<<<<< HEAD
+			wtheme.play();
+=======
+>>>>>>> origin/master
 		}
 		public override function update():void {
 			if (!isDone) {
@@ -93,7 +106,12 @@ package States.Game
 			} else {
 				cr.cx();
 				cl.cx();
+<<<<<<< HEAD
+				if (cl.x >= 0) {
+					wtheme.stop();
+=======
 				if (cl.x>=0){
+>>>>>>> origin/master
 					if (isWon) {
 					FlxG.switchState(new Play(SC+5,int(d+1),l));
 					} else {

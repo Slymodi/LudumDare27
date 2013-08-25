@@ -25,6 +25,11 @@ package States.Game
 		protected var PL:Robot = new Robot();
 		protected var cr:Curtainr = new Curtainr(), cl:Curtainl = new Curtainl();
 		protected var l:int,score:int,d:int;
+<<<<<<< HEAD
+		[Embed(source = "../../../assets/Play.mp3")] public const SF:Class;
+		protected var wtheme:FlxSound = new FlxSound();
+=======
+>>>>>>> origin/master
 		
 		public function Climb(Score:int =0,difficulty:int =0,lives:int=3) 
 		{
@@ -32,6 +37,10 @@ package States.Game
 			score = Score;
 			d = difficulty;
 			l = lives;
+<<<<<<< HEAD
+			wtheme.loadEmbedded(SF);
+=======
+>>>>>>> origin/master
 			var chance:int = int(FlxG.random() * 6);
 			add(new ClimbBG());
 			add(new Ladder())
@@ -54,8 +63,17 @@ package States.Game
 			}
 			add(Barr);
 			add(cdt)
+<<<<<<< HEAD
+			var T:FlxText = new FlxText(0, 0, FlxG.width, "Avoid barrels with A and D");
+			T.setFormat(null, 16, 0xffFFFF, "center");
+			add(T);
 			add(cl)
 			add(cr)
+			wtheme.play();
+=======
+			add(cl)
+			add(cr)
+>>>>>>> origin/master
 		}
 		public override function update():void {
 			if (!isDone){
@@ -75,7 +93,12 @@ package States.Game
 			} else {
 				cr.cx();
 				cl.cx();
+<<<<<<< HEAD
+				if (cl.x >= 0) {
+					wtheme.stop();
+=======
 				if (cl.x>=0) {
+>>>>>>> origin/master
 					if (isWon) {
 						FlxG.switchState(new Play(score+5,d+1,l));
 					} else {
