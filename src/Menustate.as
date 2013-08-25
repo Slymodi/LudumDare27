@@ -1,6 +1,7 @@
 package  
 {
 	import Entities.Cursor;
+	import Entities.Title;
 	import org.flixel.*;
 	import org.flixel.FlxText;
 	import org.flixel.FlxButton;
@@ -17,11 +18,13 @@ package
 		public var play:FlxButton;
 		public var credit:FlxButton;
 		public var titletheme:FlxSound = new FlxSound();
-		protected function SwitchtoP():void { 
+		protected function SwitchtoP():void {
+			titletheme.stop();
 			FlxG.switchState(new Play());
 		}
 		
 		protected function SwitchtoC():void { 
+			titletheme.stop();
 			FlxG.switchState(new Credits());
 		}
 		public function Menustate() 
@@ -31,7 +34,8 @@ package
 			//c = new Cursor();
 			//add(new FlxText(0, 0, 1000, "Hello LD27"));
 			play = new FlxButton(200, 400, "Play", SwitchtoP);
-			credit = new FlxButton(400, 400, "credit", SwitchtoC);
+			credit = new FlxButton(500, 400, "credit", SwitchtoC);
+			add(new Title());
 			add(play);
 			//add(c)
 			add(credit);

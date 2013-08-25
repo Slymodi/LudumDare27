@@ -8,7 +8,10 @@ package Entities.Rhinojump
 	public class Rhino extends FlxSprite
 	{
 		[Embed(source = "../../../assets/Rhino.png")] public const IMG:Class;
-		protected var s:FlxPoint = new FlxPoint(3,3);
+		protected var s:FlxPoint = new FlxPoint(3, 3);
+		protected var vel:Point = new Point(0, 0);
+		protected var acc:Point = new Point(0, 9.8);
+		
 		public function Rhino() 
 		{
 			super(200,200);
@@ -21,9 +24,13 @@ package Entities.Rhinojump
 		public override function update():void {
 			if (FlxG.keys.justReleased("SPACE")) {
 				play("jump");
+				if (acc.y=0){
+				acc.y = -150;
+				}
 			} else {
 				play("running");
 			}
+			
 			super.update();
 		}
 	}

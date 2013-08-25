@@ -31,6 +31,8 @@ package States.Game
 		protected var isdone:Boolean = false;
 		protected var isWon:Boolean = false;
 		protected var cdt:Countdown = new Countdown();
+		[Embed(source = "../../../assets/Play.mp3")] public const SF:Class;
+		protected var wtheme:FlxSound = new FlxSound();
 		
 		public function Kill(Score:int=0,diffuculty:Number =1,lives:int=3) 
 		{
@@ -39,6 +41,7 @@ package States.Game
 			t = new FlxText(0, 0, FlxG.width, "Kill the Ninjas!");
 			t.setFormat(null, 16, 0xffffff, "center");
 			add(t);
+			wtheme.loadEmbedded(SF);
 			diff = diffuculty;
 			var d:int = int(diffuculty);
 			Scoreval = Score;
@@ -53,6 +56,7 @@ package States.Game
 			add(cl);
 			add(cr)
 			add(cdt);
+			wtheme.play();
 		}
 		public override function update():void {
 			cdt.setnum(int(count));
@@ -73,18 +77,19 @@ package States.Game
 				isdone = true;
 				isWon = true;
 			}
-			if (count<=0&&g.length>=1) {
+			if (count<=0) {
 				isdone = true;
 			}
 			
 			} else {
 				cr.cx();
 				cl.cx();
-				if (cl.x>=0) {
+				if (cl.x >= 0) {
+					wtheme.stop();
 					if (isWon) {
-						FlxG.switchState(new Play(Scoreval + 5,diff*5-4,l));
+						FlxG.switchState(new Play(Scoreval + 5,diff+1,l));
 					} else {
-						FlxG.switchState(new Play(Scoreval,diff*5-4,l-1));
+						FlxG.switchState(new Play(Scoreval,diff+1,l-1));
 					}
 				}
 			}
