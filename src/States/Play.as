@@ -2,9 +2,13 @@ package States
 {
 	import Entities.Hearts;
 	import Entities.Resist.Fist;
+<<<<<<< HEAD
 	import flash.media.Sound;
 	import org.flixel.*;
 	import States.Game.AlligatorRun;
+=======
+	import org.flixel.*;
+>>>>>>> origin/master
 	import States.Game.Climb;
 	import States.Game.Collect;
 	import States.Game.Kill;
@@ -24,22 +28,35 @@ package States
 		 * 
 		 * 
 		 */
+<<<<<<< HEAD
 		[Embed(source="../../assets/waiting.mp3")]public const SF:Class
+=======
+>>>>>>> origin/master
 		protected var Counter:Number = 3;
 		private var S:int;
 		protected var d:int = 0;
 		protected var heart:Hearts;
 		protected var hval:int;
+<<<<<<< HEAD
 		protected var wtheme:FlxSound = new FlxSound();
 		
 		public function Play(Score:int = 0,difficulty:int=1,hearts:int=3) 
 		{
 			wtheme.loadEmbedded(SF);
+=======
+		
+		public function Play(Score:int = 0,difficulty:int=1,hearts:int=3) 
+		{
+>>>>>>> origin/master
 			S = Score;
 			d = difficulty;
 			hval = hearts;
 			heart = new Hearts(hval);
 			super();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 			FlxG.bgColor = FlxG.random() * 0x00FFFFFF + 0xFF000000;
 			trace("Play");
 			var t1:FlxText = new FlxText(0, 0, FlxG.width, "Get ready for the next round");
@@ -49,6 +66,7 @@ package States
 			t2.setFormat(null, 16,0xffffff,"center");
 			add(t2);
 			add(heart);
+<<<<<<< HEAD
 			wtheme.play()
 		}
 		public override function update():void {
@@ -77,4 +95,21 @@ package States
 	}
 
 }
+=======
+		}
+		public override function update():void {
+			if (hval == 0) {
+				trace("BAMAMAM");
+				FlxG.switchState(new EndGame(S));
+			}
+			var chance:int = int(FlxG.random() * 5); 
+			if (Counter<=0){
+			FlxG.switchState(new Climb(S,20,hval));
+			}
+			Counter -= FlxG.elapsed;
+			super.update();
+		}
+	}
+
+>>>>>>> origin/master
 }

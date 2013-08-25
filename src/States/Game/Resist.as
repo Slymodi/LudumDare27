@@ -26,8 +26,11 @@ package States.Game
 		protected var cl:Curtainl = new Curtainl();
 		protected var isWon:Boolean = true;
 		protected var cdt:Countdown = new Countdown();
+<<<<<<< HEAD
 		[Embed(source = "../../../assets/Play.mp3")] public const SF:Class;
 		protected var wtheme:FlxSound = new FlxSound();
+=======
+>>>>>>> origin/master
 		
 		public function Resist(Score:int =0,difficulty:Number=1,lives:int=3) 
 		{
@@ -40,11 +43,17 @@ package States.Game
 			scoreVal = Score;
 			add(H);
 			add(F);
+<<<<<<< HEAD
 			wtheme.loadEmbedded(SF);
 			add(cl);
 			add(cr);
 			add(cdt);
 			wtheme.play();
+=======
+			add(cl);
+			add(cr);
+			add(cdt);
+>>>>>>> origin/master
 		}
 		public override function update():void {
 			if (!isdone) {
@@ -68,8 +77,12 @@ package States.Game
 			} else {
 				cr.cx();
 				cl.cx();
+<<<<<<< HEAD
 				if (cl.x >= 0) {
 					wtheme.stop();
+=======
+				if (cl.x>=0) {
+>>>>>>> origin/master
 					if (isWon) {
 						FlxG.switchState(new Play(scoreVal,d,l));
 					}else {

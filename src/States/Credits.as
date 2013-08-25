@@ -7,6 +7,7 @@ package States
 	import org.flixel.*;
 	public class Credits extends FlxState
 	{
+<<<<<<< HEAD
 		public function goback():void {
 			FlxG.switchState(new Menustate());
 		}
@@ -32,6 +33,13 @@ package States
 			var T6:FlxText = new FlxText(0, 80, FlxG.width, "Music Made with Sunvox,Graphics made with Paint.net");
 			T6.setFormat(null, 16, 0xffFFFF, "center");
 			add(T6);
+=======
+		
+		public function Credits() 
+		{
+			super();
+			
+>>>>>>> origin/master
 		}
 		
 	}
